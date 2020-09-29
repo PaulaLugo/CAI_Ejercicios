@@ -1,0 +1,10 @@
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad\obj\Debug\Facultad.csprojAssemblyReference.cache
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad\obj\Debug\Facultad.csproj.CoreCompileInputs.cache
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\bin\Debug\Facultad.exe.config
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\bin\Debug\Facultad.exe
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\bin\Debug\Facultad.pdb
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\bin\Debug\Facultad.Library.dll
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\bin\Debug\Facultad.Library.pdb
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\obj\Debug\Facultad.csproj.CopyComplete
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\obj\Debug\Facultad.exe
+C:\Users\lugoisol\Source\Repos\CAI_Ejercicios\Facultad\obj\Debug\Facultad.pdb

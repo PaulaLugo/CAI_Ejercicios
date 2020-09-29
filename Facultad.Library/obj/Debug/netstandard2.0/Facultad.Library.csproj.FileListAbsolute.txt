@@ -1,0 +1,8 @@
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.AssemblyInfoInputs.cache
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.AssemblyInfo.cs
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.csproj.CoreCompileInputs.cache
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\bin\Debug\netstandard2.0\Facultad.Library.deps.json
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\bin\Debug\netstandard2.0\Facultad.Library.dll
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\bin\Debug\netstandard2.0\Facultad.Library.pdb
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.dll
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.pdb

@@ -27,6 +27,8 @@ namespace Ejercicio1
             
 
         }
+        //1. git commit -a -m "commit pruebas"
+        // 2. git push
         //git remote add origin https://github.com/PaulaLugo/CAI_Ejercicios.git
         //git branch -M master
         //git status
