@@ -19,6 +19,13 @@ namespace Ejercicio1
             Console.Read();
 
             //hola
+
+            for (int i = 5; i < 10; i++)
+            {
+                Console.WriteLine(10%i);
+            }
+            
+
         }
         //git remote add origin https://github.com/PaulaLugo/CAI_Ejercicios.git
         //git branch -M master

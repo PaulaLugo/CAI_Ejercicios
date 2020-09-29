@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Ejercicios"
+    "\\Ejercicios",
+    "\\Ejercicios\\Ejercicio1",
+    "\\Ejercicios\\Ejercicio1\\Properties",
+    "\\Facultad",
+    "\\Facultad.Library"
   ],
-  "SelectedNode": "\\Ejercicios\\Ejercicio1",
+  "SelectedNode": "\\Ejercicios\\Ejercicios.sln",
   "PreviewInSolutionExplorer": false
 }
