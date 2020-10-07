@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio1", "Ejercicio1\Ejercicio1.csproj", "{3F49C1D7-EFBD-4797-B451-C19442C90B19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facultad.Library", "..\Facultad.Library\Facultad.Library.csproj", "{DA649826-2576-41F3-8284-08FC2B7E4CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facultad.Library", "..\Facultad.Library\Facultad.Library.csproj", "{DA649826-2576-41F3-8284-08FC2B7E4CAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facultad", "..\Facultad\Facultad.csproj", "{4B45C3D8-BC0B-43BA-9BEE-2972386CA2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM.Facultad", "ABM.Facultad\ABM.Facultad.csproj", "{077904D4-FDE5-42F8-AEA8-BE08944B2AB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{4B45C3D8-BC0B-43BA-9BEE-2972386CA2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B45C3D8-BC0B-43BA-9BEE-2972386CA2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B45C3D8-BC0B-43BA-9BEE-2972386CA2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077904D4-FDE5-42F8-AEA8-BE08944B2AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077904D4-FDE5-42F8-AEA8-BE08944B2AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077904D4-FDE5-42F8-AEA8-BE08944B2AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077904D4-FDE5-42F8-AEA8-BE08944B2AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

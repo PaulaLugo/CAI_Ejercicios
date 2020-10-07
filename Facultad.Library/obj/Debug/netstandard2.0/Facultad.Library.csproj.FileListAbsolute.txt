@@ -6,3 +6,4 @@ C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\bin\Debug\netstan
 C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\bin\Debug\netstandard2.0\Facultad.Library.pdb
 C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.dll
 C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.pdb
+C:\Users\lugoisol\source\repos\CAI_Ejercicios\Facultad.Library\obj\Debug\netstandard2.0\Facultad.Library.csprojAssemblyReference.cache

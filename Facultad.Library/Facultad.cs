@@ -5,13 +5,18 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Facultad.Library
+namespace FacuLibrary
 {
-    class Facultad
+    public class Facultad
     {
         private List<Empleado> _empleados;
         private List<Alumno> _alumnos;
 
+        public Facultad()
+        {
+            _empleados = new List<Empleado>();
+            _alumnos = new List<Alumno>();
+        }
 
         private int _cantidadSedes;
 
@@ -30,21 +35,40 @@ namespace Facultad.Library
         }
        public  void AgregarAlumno(Alumno item)
         {
+
+            if (_alumnos.Any(o => o.Codigo == item.Codigo))
+            {
+                throw new facuException("Ya existe un alumno con ese codigo");
+            }
+           
             _alumnos.Add(item);
 
         }
         public void AgregarEmpleado(Empleado item)
         {
+            if (_empleados.Any(o => o.Legajo == item.Legajo))
+            {
+                throw new facuException("Ya existe un Empleado con ese Legajo");
+            }
             _empleados.Add(item);
 
         }
         public void EliminarEmpleado(int id)
         {
+
+            if (!_empleados.Any(o => o.Legajo == id))
+            {
+                throw new facuException("No existe un Empleado con ese Legajo");
+            }
             _empleados.RemoveAll(o => o.Legajo == id);
         }
 
         public void EliminarAlumno(int id)
         {
+            if (!_alumnos.Any(o => o.Codigo == id))
+            {
+                throw new facuException("No existe un alumno con ese Codigo");
+            }
             _alumnos.RemoveAll(o => o.Codigo == id);
         }
 

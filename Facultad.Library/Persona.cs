@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Facultad.Library
+namespace FacuLibrary
 {
     public abstract class Persona    
     {
@@ -13,7 +13,7 @@ namespace Facultad.Library
         public int Edad
         {
             get { return DateTime.Today.Subtract(_fechaNac).Days / 365; }
-           
+      
         }
         
         public string Nombre
@@ -32,7 +32,7 @@ namespace Facultad.Library
       
         public string GetNombreCompleto()
         {
-            return _nombre + _apellido;
+            return _nombre + " " + _apellido;
         }
 
 

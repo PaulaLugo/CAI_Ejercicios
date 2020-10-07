@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using Facultad.Library;
+using FacuLibrary;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 
-namespace Facultad
+namespace FacuConsola
 {
     class Program
     {
-        
-        static List<Empleado> _empleados ;
+        static Facultad facu;
 
-        static List<Alumno> _alumnos;
 
         /// <summary>
         /// 
@@ -21,8 +21,9 @@ namespace Facultad
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            _alumnos = new List<Alumno>();
-            _empleados = new List<Empleado>();
+            facu = new Facultad();
+
+           
 
             //ABM y listado de[Alumno] y[Empleado - abstracta -].
             int opt;
@@ -33,6 +34,10 @@ namespace Facultad
             
         }
               
+        /// <summary>
+        /// ejemplo para maru
+        /// </summary>
+        /// <returns></returns>
         static int MostrarMenu()
         {
             int m;
@@ -108,22 +113,20 @@ namespace Facultad
                 case 4:
                     Alta_Empleado();
                     break;
-                case 7:
+                case 5:
                     Baja_Empleado();
                     break;
-                case 8:
+                case 6:
                     Modificar_Empleado();
                     break;
-                case 9:
+                case 7:
                     Listado_Alumnos();
                     break;
-                case 10:
+                case 8:
                     Listado_Empleados();
                     break;
-              
-
                 default:
-                    Console.WriteLine("Funcionalidad no implementada. Presion cualquier tecla para salir.");
+                    Console.WriteLine("Ingrese una opcion valida. Presion cualquier tecla para salir.");
                     Console.ReadKey();
                     break;
             }
@@ -131,74 +134,162 @@ namespace Facultad
            
         }
 
-
         static void Alta_Alumno()
         {
-            Helper.PonerTitulo("1 –  Alta de Alumnos");
-            var ret = new Alumno();
-            while (true)
+            string rta = "Y";
+            do
             {
-                Console.Write("Nombre: ");
-                var r = Console.ReadLine();
-                if (r == string.Empty)
-                {
-                    Console.WriteLine("Ingrese un nombre valido. No puede estar vacio");
-                }
-                else
-                {
-                    ret.Nombre = r;
-                    break;
-                }
-            }
+                Helper.PonerTitulo("1 –  Alta de Alumnos");
+                var ret = new Alumno();
 
-            while (true)
-            {
-                Console.Write("Nombre: ");
-                var r = Console.ReadLine();
-                if (r == string.Empty)
-                {
-                    Console.WriteLine("Ingrese un nombre valido. No puede estar vacio");
-                }
-                else
-                {
-                    ret.Nombre = r;
-                    break;
-                }
-            }
+                ret.Nombre = (string)Helper.PedirPropiedad("Nombre", typeof(string));
+                ret.Apellido = (string)Helper.PedirPropiedad("Apellido", typeof(string));
+                ret.Codigo = (int)Helper.PedirPropiedad("Codigo", typeof(int));
 
+                try
+                {
+                    facu.AgregarAlumno(ret);
+                    Console.WriteLine("Alumno creado");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+              
+            } while (Helper.Continuo());
+
+           
 
         }
         
         static void Baja_Alumno()
         {
-            Helper.PonerTitulo("2 –  Baja de Alumnos");
+            Helper.PonerTitulo("2 –  Baja de Alumno");
+
+            var codigo = (int)Helper.PedirPropiedad("Codigo", typeof(int));
+            try
+            {
+                facu.EliminarAlumno(codigo);
+                Console.WriteLine("Alumno eliminado");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Helper.Continuar();
         }
          
         static void Modificar_Alumno()
         {
-        }
+            Helper.PonerTitulo("3 – Editar Alumno");
 
+            var codigo = (int)Helper.PedirPropiedad("Codigo", typeof(int));
+            var alumno = facu.TraerAlumnos().Where(o => o.Codigo == codigo).FirstOrDefault();
+
+            if (alumno == null)
+            {
+                Console.WriteLine("No se encontraron alumnos con ese codigo");
+            }
+            else
+            {
+                alumno.Nombre = (string)Helper.PedirPropiedad("Nombre", typeof(string));
+                alumno.Apellido = (string)Helper.PedirPropiedad("Apellido", typeof(string));
+                facu.EliminarAlumno(codigo);
+                facu.AgregarAlumno(alumno);
+                Console.WriteLine("Alumno modificado");
+            }
+            Helper.Continuar();
+        }
             
         static void Alta_Empleado()
         {
+            Helper.PonerTitulo("4 –  Alta de Empleado");
+            Empleado ret = null;
+            var tipo= (int)Helper.PedirTipoEmpleado( typeof(TipoEmpleado));
+
+
+            switch (tipo)
+            { 
+                case  1:
+                    ret = new Bedel();
+                    break;
+                case 2:
+                    ret = new Directivo();
+                    break;
+                case 3:
+                    ret = new Docente();
+                    break;
+                default:
+                    throw new facuException("Este tipo de empleado no existe");
+                    break;
+            }
+           
+
+            ret.Nombre = (string)Helper.PedirPropiedad("Nombre", typeof(string));
+            ret.Apellido = (string)Helper.PedirPropiedad("Apellido", typeof(string));
+            ret.Legajo = (int)Helper.PedirPropiedad("Legajo", typeof(int));
+
+            try
+            {
+                facu.AgregarEmpleado(ret);
+                Console.WriteLine("Empleado creado");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Helper.Continuar();
         }
         
         static void Baja_Empleado()
         {
+            Helper.PonerTitulo("5 –  Baja de Empleado");
+
+            var codigo = (int)Helper.PedirPropiedad("Legajo", typeof(int));
+            try
+            {
+                facu.EliminarEmpleado(codigo);
+                Console.WriteLine("Empleado eliminado");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Helper.Continuar();
         }
          
         static void Modificar_Empleado()
         {
+            Helper.PonerTitulo("6 – Editar Empleado");
+
+            var codigo = (int)Helper.PedirPropiedad("Legajo", typeof(int));
+            var empleado = facu.TraerEmpleados().Where(o => o.Legajo == codigo).FirstOrDefault();
+
+            if (empleado == null)
+            {
+                Console.WriteLine("No se encontraron empleados con ese legajo");
+            }
+            else
+            {
+                var sal = (double)Helper.PedirPropiedad("Salario", typeof(double));
+                empleado.AgregarSalario( new Salario(sal));
+                facu.EliminarEmpleado(codigo);
+                facu.AgregarEmpleado(empleado);
+                Console.WriteLine("Empleado modificado");
+            }
+            Helper.Continuar();
         }
-                        
+
         static void Listado_Alumnos()
         {
             Helper.PonerTitulo("7 –  Listar los Alumnos");
 
             //Pedir parametros?
 
+            var alumnos = facu.TraerAlumnos();
 
-            if (!_alumnos.Any())
+            if (!alumnos.Any())
             {
                 Console.Write("No hay alumnos registrados. ");
                 Helper.Continuar();
@@ -208,10 +299,9 @@ namespace Facultad
             else
             {
 
-                Console.WriteLine("{0,23}{1,10}{2,12:N0}", "Nombre", "Apellido", "Registro");
-                Console.WriteLine("{0,23}{1,10}{2,12:N0}", "------", "--------", "--------");
 
-                foreach (Alumno item in _alumnos)
+
+                foreach (Alumno item in alumnos)
                 {
                     Console.WriteLine(item.ToString());
                 }
@@ -222,18 +312,17 @@ namespace Facultad
             Console.WriteLine();
             Helper.Continuar();
         }
-            
-      
-
+     
         static void Listado_Empleados()
         {
           
                 Helper.PonerTitulo("8 –  Listar los Empleados");
 
+            
             //Pedir parametros?
 
-
-                if (!_empleados.Any())
+                var empleados = facu.TraerEmpleados();
+                if (!empleados.Any())
                 {
                     Console.Write("No hay empleados registrados. ");
                     Helper.Continuar();
@@ -243,10 +332,9 @@ namespace Facultad
                 else
                 {
 
-                    Console.WriteLine("{0,23}{1,10}{2,12:N0}", "Nombre", "Apellido", "Registro");
-                    Console.WriteLine("{0,23}{1,10}{2,12:N0}", "------", "--------", "--------");
+              
 
-                    foreach (Empleado item in _empleados)
+                foreach (Empleado item in empleados)
                     {
                         Console.WriteLine(item.ToString());
                     }
@@ -256,14 +344,8 @@ namespace Facultad
               
                 Console.WriteLine();
                 Helper.Continuar();
-
         
             }
 
-          
-        
-          
-       
-        
     }
 }

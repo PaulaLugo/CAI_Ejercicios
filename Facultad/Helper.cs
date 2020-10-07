@@ -1,6 +1,7 @@
-﻿using System;
+﻿using FacuLibrary;
+using System;
 
-namespace Facultad
+namespace FacuConsola
 {
 	public static class Helper
 	{
@@ -41,11 +42,12 @@ namespace Facultad
 
                     try
                     {
-                        return r;
+                        return Convert.ChangeType(r, tipo);
                     }
                     catch
                     {
-                        Console.WriteLine("Ingrese un valor valido.");
+                        Console.Write("Ingrese un valor valido. "); 
+                        Console.WriteLine("Se espera un {0}",tipo );
                     }
 
                 }
@@ -53,5 +55,38 @@ namespace Facultad
             }
         }
 
+        internal static object PedirTipoEmpleado( Type tipo)
+        {
+            while (true)
+            {
+                Console.WriteLine("Tipos de empleado");
+                
+                for (int i = 1; i <= 3; i++)
+                {
+                    var j = (TipoEmpleado)i;
+                    Console.WriteLine("{0} - {1}", i, j );
+                }
+                Console.WriteLine();
+                var t = (int)Helper.PedirPropiedad("Tipo  de Empleado", typeof(int));
+                if (t <= 3 & t > 0)
+                {
+                    return t;
+                }
+            }
+        }
+
+        internal static bool PreguntaYN(string ques)
+        {
+            Console.WriteLine(ques + "Y/N");
+            string rta = Console.ReadLine();
+            Console.Clear();
+            return (rta.ToUpper() == "Y");
+        }
+
+        internal static bool Continuo()
+        {
+            return PreguntaYN("Desea continuar?");
+ 
+        }
     }
 }

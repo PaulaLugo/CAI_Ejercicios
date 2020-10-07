@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Facultad.Library
+namespace FacuLibrary
 {
     public abstract class Empleado : Persona
     {
         private List<Salario> _salarios;
         private DateTime _fechaIngreso;
         private int _legajo;
+        protected TipoEmpleado tipo;
 
+        public Empleado()
+        {
+            _salarios = new List<Salario>();
+            
+        }
         public List<Salario> Salarios
         {
             get { return _salarios; }
@@ -44,7 +50,10 @@ namespace Facultad.Library
 
         public Salario UltimoSalario
         {
-            get { return _salarios.LastOrDefault(); }
+            get
+            {
+       
+                return _salarios.DefaultIfEmpty<Salario>(new Salario(0)).First(); }
 
         }
         public void AgregarSalario(Salario item)
@@ -141,7 +150,7 @@ namespace Facultad.Library
         }
     }
 
-    enum TipoEmpelado
+    public enum TipoEmpleado
     {
             Bedel=1,
             Docente=2,
@@ -149,6 +158,10 @@ namespace Facultad.Library
     }
     public class Docente : Empleado
     {
+        public Docente()
+        {
+            base.tipo = TipoEmpleado.Docente;
+        }
         public override string GetCredential()
         {
             return base.GetCredencial();
@@ -162,6 +175,10 @@ namespace Facultad.Library
 
     public class Directivo : Empleado
     {
+        public Directivo()
+        {
+            base.tipo = TipoEmpleado.Directivo;
+        }
         public override string GetCredential()
         {
             return base.GetCredencial();
@@ -175,6 +192,10 @@ namespace Facultad.Library
     
     public class Bedel : Empleado
     {
+        public Bedel()
+        {
+            base.tipo = TipoEmpleado.Bedel;
+        }
         protected string _apodo;
 
         public string Apodo
